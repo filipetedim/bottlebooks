@@ -1,0 +1,6 @@
+{
+	"PORT": 3000,
+	"URL": "ds153715.mlab.com:53715/bottlebooks/warcraftwardrobe",
+	"USERNAME": "root",
+	"PASSWORD": "someGreatPassword"
+}

@@ -1,0 +1,6 @@
+{
+	"ignore": ["public/*"],
+	"events": {
+		"start": "./node_modules/.bin/eslint models/*.js bl/*.js middlewares/*.js middlewares/**/*.js routes/*.js config/*.js server.js"
+	}
+}
