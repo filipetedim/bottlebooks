@@ -22,7 +22,7 @@ Users
 Users.route('register', ['post'], UsersBL.register);
 Users.route('activate', ['get'], UsersBL.activate);
 Users.route('login', ['post'], UsersBL.login);
-Users.route('pendingusers', ['get'] UsersBL.getPendingUsers);
+Users.route('pendingusers', ['get'], UsersBL.getPendingUsers);
 
 // Export restful object
 module.exports = Users;
