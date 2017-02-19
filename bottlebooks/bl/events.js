@@ -42,7 +42,7 @@ const create = (req, res, next) => {
 /**
  * Hides information after getting all events.
  *
- * If the get request was to get all the events, hides the participants and owner id from the response.
+ * If the get request was to get all the events, hides the participants so that other people don't have access to them.
  *
  * @param {Object} req - the request object
  * @param {Object} res - the result object
@@ -53,7 +53,6 @@ const getAll = (req, res, next) => {
     
     if (!req.url.split('/')[2] && res && res.locals && res.locals.bundle) {
         res.locals.bundle.map(event => {
-            event.owner._userId = undefined;
             event.participants = event.participants.reduce((prev, next) => {
                 if (next._userId === token._id) {
                     prev.push(next);
