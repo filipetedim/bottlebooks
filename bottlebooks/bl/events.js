@@ -49,10 +49,17 @@ const create = (req, res, next) => {
  * @param {Function} next - callback
  */
 const getAll = (req, res, next) => {
+    const token = req.decoded;
+    
     if (!req.url.split('/')[2] && res && res.locals && res.locals.bundle) {
         res.locals.bundle.map(event => {
-            event.participants = undefined;
             event.owner._userId = undefined;
+            event.participants = event.participants.reduce((prev, next) => {
+                if (next._userId === token._id) {
+                    prev.push(next);
+                }
+                return prev;
+            }, []);
             return event;
         });
     }
