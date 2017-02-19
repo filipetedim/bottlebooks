@@ -180,9 +180,27 @@ const login = (req, res) => {
     });
 };
 
+/**
+ * Gets all the users that are pending.
+ *
+ * @param {Object} req - the request object
+ * @param {Object} res - the result object
+ */
+const getPendingUsers = (req, res) => {
+    Users.find({settings: {active: false}}, (err, users) => {
+        if (err) {
+            // TODO rollbar
+            return res.status(500).send({message: 'Something went wrong!'});
+        }
+
+        res.send(users);
+    });
+};
+
 // Export functions
 module.exports = {
     register,
     activate,
-    login
+    login,
+    getPendingUsers
 };
