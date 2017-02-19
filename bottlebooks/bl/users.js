@@ -187,7 +187,7 @@ const login = (req, res) => {
  * @param {Object} res - the result object
  */
 const getPendingUsers = (req, res) => {
-    Users.find({settings: {active: false}}, (err, users) => {
+    Users.find({'settings.active': false}, {multi: true} (err, users) => {
         if (err) {
             // TODO rollbar
             return res.status(500).send({message: 'Something went wrong!'});
