@@ -1,0 +1,21 @@
+<!-- Menu (this should be a directive) -->
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <button class="btn" ng-click="href('/events/add')">Create event</button>
+        <button class="btn" ng-click="href('/events')">All events</button>
+        <button class="btn pull-right" ng-click="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4"
+         style="border: 1px solid #dbdbdb; border-radius: 3px; padding: 10px">
+        <div class="col-xs-12" style="margin-bottom: 5px;">Event title: {{event.title}}</div>
+        <div class="col-xs-12" style="margin-bottom: 5px;">Date: {{event.date}}</div>
+        <div class="col-xs-12" style="margin-bottom: 5px;">Description: {{event.description}}</div>
+        <div class="col-xs-12" style="margin-bottom: 5px;">
+            Participants:
+            <span ng-repeat="participant in event.participants track by $index">{{participant.name}}, </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<!-- Menu (this should be a directive) -->
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <button class="btn" ng-click="href('/events/add')">Create event</button>
+        <button class="btn" ng-click="href('/events')">All events</button>
+        <button class="btn pull-right" ng-click="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4"
+         style="border: 1px solid #dbdbdb; border-radius: 3px; padding: 10px">
+        <div class="col-xs-12" style="margin-bottom: 5px;">Create new event</div>
+        <form id="createEventForm" name="createEventForm" role="form" ng-submit="createEvent(createEventForm.$valid)">
+            <div class="form-group"
+                 ng-class="{'has-error': createEventForm.title.$invalid && (createEventForm.title.$dirty || createEventForm.$submitted)}">
+                <input type="text" name="title" class="form-control" placeholder="Title" ng-model="eventData.title"
+                       required>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error': createEventForm.date.$invalid && (createEventForm.date.$dirty || createEventForm.$submitted)}">
+                <input type="text" name="date" class="form-control" placeholder="Date (DD/MM/YYY)"
+                       ng-model="eventData.date" required>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error': createEventForm.description.$invalid && (createEventForm.description.$dirty || createEventForm.$submitted)}">
+                <input type="text" name="description" class="form-control" placeholder="Description"
+                       ng-model="eventData.description" required>
+            </div>
+            <button type="submit" class="col-xs-12 btn">Create Event</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<!-- Menu (this should be a directive) -->
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <button class="btn" ng-click="href('/events/add')">Create event</button>
+        <button class="btn" ng-click="href('/events')">All events</button>
+        <button class="btn pull-right" ng-click="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4"
+         style="border: 1px solid #dbdbdb; border-radius: 3px; padding: 10px">
+        <div class="col-xs-12" style="margin-bottom: 5px;">Events you created (Click to view participants):</div>
+        <div class="col-xs-12 col-sm-6" ng-repeat="event in eventsCreated track by $index"
+             ng-click="href('/events/' + event._id)">
+            <div class="col-xs-12" style="background: #dbdbdb; cursor: pointer; padding-bottom: 10px;">
+                <div class="col-xs-12" style="padding: 0">Event title: {{event.title}}</div>
+                <div class="col-xs-12" style="padding: 0">Event date: {{event.date}}</div>
+                <div class="col-xs-12" style="padding: 0">Owner: {{event.owner.name}}</div>
+                <button class="col-xs-12 btn" style="box-shadow: 0px 1px 3px #888888" ng-click="openEvent(event._id)">
+                    See more details
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4"
+         style="border: 1px solid #dbdbdb; border-radius: 3px; padding: 10px">
+        <div class="col-xs-12" style="margin-bottom: 5px;">Events you are participating (You can't access them):</div>
+        <div class="col-xs-12 col-sm-6" ng-repeat="event in eventsParticipating track by $index">
+            <div class="col-xs-12" style="background: #dbdbdb">
+                <div class="col-xs-12" style="padding: 0">Event title: {{event.title}}</div>
+                <div class="col-xs-12" style="padding: 0">Event date: {{event.date}}</div>
+                <div class="col-xs-12" style="padding: 0">Owner: {{event.owner.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 30px">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4"
+         style="border: 1px solid #dbdbdb; border-radius: 3px; padding: 10px">
+        <div class="col-xs-12" style="margin-bottom: 5px;">Other events (You can't access them):</div>
+        <div class="col-xs-12 col-sm-6" ng-repeat="event in events track by $index">
+            <div class="col-xs-12" style="background: #dbdbdb; padding-bottom: 10px">
+                <div class="col-xs-12" style="padding: 0">Event title: {{event.title}}</div>
+                <div class="col-xs-12" style="padding: 0">Event date: {{event.date}}</div>
+                <div class="col-xs-12" style="padding: 0">Owner: {{event.owner.name}}</div>
+                <button class="col-xs-12 btn" style="box-shadow: 0px 1px 3px #888888" ng-click="participate(event._id)">
+                    Participate
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
