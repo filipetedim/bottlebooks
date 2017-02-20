@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <form id="registerForm" name="registerForm" role="form" ng-submit="submit(registerForm.$valid)">
+            <div class="form-group"
+                 ng-class="{'has-error': registerForm.name.$invalid && (registerForm.name.$dirty || registerForm.$submitted)}">
+                <input type="text" name="name" class="form-control" placeholder="Name" ng-model="userData.name"
+                       required>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error': registerForm.email.$invalid && (registerForm.email.$dirty || registerForm.$submitted)}">
+                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="userData.email"
+                       required>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error': registerForm.password.$invalid && (registerForm.password.$dirty || registerForm.$submitted)}">
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                       ng-model="userData.password" required>
+            </div>
+            <button type="submit" class="col-xs-12 btn">Register</button>
+        </form>
+    </div>
+</div>

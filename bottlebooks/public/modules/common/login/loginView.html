@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <form id="loginForm" name="loginForm" role="form" ng-submit="login(loginForm.$valid)">
+            <div class="form-group"
+                 ng-class="{'has-error': loginForm.email.$invalid && (loginForm.email.$dirty || loginForm.$submitted)}">
+                <input type="email" name="email" class="form-control input-lg" placeholder="Email" ng-model="email"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" class="form-control input-lg" placeholder="Password"
+                       ng-model="password" required>
+            </div>
+
+            <div class="form-group" ng-if="loginError" style="color: red">
+                Email and password combination doesn't exist!
+            </div>
+
+            <div class="form-group"
+                 ng-class="{'has-error': loginForm.password.$invalid && (loginForm.password.$dirty || loginForm.$submitted)}">
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn" ng-click="href('/register')">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" ng-if="usersPending.length > 0">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="col-xs-12">Users pending activation (these links would be sent by email):</div>
+        <div class="col-xs-12" ng-repeat="user in usersPending track by $index">
+            <a ng-click="href('/activate/' + user._id)" style="cursor: pointer">
+                Click to activate user: {{user.name}} - {{user._id}}
+            </a>
+        </div>
+    </div>
+</div>
