@@ -8,5 +8,8 @@ var bottlebooksApp = angular.module('bottlebooksApp',
         'common.login',
         'common.factories',
         'common.services',
+        'common.register',
+        'common.activate',
+        'events'
     ]
 );
