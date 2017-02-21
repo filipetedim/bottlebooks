@@ -13,18 +13,18 @@ bottlebooksApp.config(['$routeProvider', function ($routeProvider) {
                 }]
             }
         })
-        .when('/events/:eventId', {
-            controller: 'EventController',
-            templateUrl: 'modules/events/event/eventView.html',
+        .when('/events/add', {
+            controller: 'EventAddController',
+            templateUrl: 'modules/events/add/eventAddView.html',
             resolve: {
                 permission: ['RolesFactory', function (RolesFactory) {
                     return RolesFactory.isLogged();
                 }]
             }
         })
-        .when('/events/add', {
-            controller: 'EventAddController',
-            templateUrl: 'modules/events/add/eventAddView.html',
+        .when('/events/:eventId', {
+            controller: 'EventController',
+            templateUrl: 'modules/events/event/eventView.html',
             resolve: {
                 permission: ['RolesFactory', function (RolesFactory) {
                     return RolesFactory.isLogged();
