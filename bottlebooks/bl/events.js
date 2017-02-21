@@ -20,21 +20,13 @@ const create = (req, res, next) => {
     if (!req.body.title || !req.body.description || !req.body.date) {
         return res.status(400).send({message: 'Missing params!'});
     }
-
-    const date = req.body.date;
-
-    // Check if date is valid
-    if (!moment(date).isValid()) {
-        return res.status(400).send({message: 'Invalid date!'});
-    }
-    
-    // Add missing information and set the date as timestamp
+        
+    // Add missing information
     req.body.owner = {
         _userId: req.decoded._id,
         name: req.decoded.name
     };
     req.body.participants = [req.body.owner];
-    req.body.date = moment(date).format('x');
 
     next();
 };
