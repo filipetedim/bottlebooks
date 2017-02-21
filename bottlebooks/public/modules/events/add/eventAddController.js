@@ -33,6 +33,7 @@ eventAdd.controller('EventAddController', [
             }
 
             var eventData = angular.copy($scope.eventData);
+            eventData.date = date.format('x');
 
             EventsService.createEvent(eventData).then(function () {
                 $scope.href('/events');
